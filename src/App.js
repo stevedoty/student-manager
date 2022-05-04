@@ -1,19 +1,23 @@
-import React, {Component} from 'react'
-import './App.css';
+import * as React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import "./App.css";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+import AddStudent from './pages/AddStudent'
+import StudentList from './pages/StudentList'
 
-    }
-  }
-
-  render() {
-    return(
-      <h1>Student Manager</h1>
-    )
-  }
+const App = () => {
+  return (
+    <div className="App">
+      <nav>
+        <Link to="/">Add</Link>
+        <Link to="/students">Students</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<AddStudent />} />
+        <Route path="/students" element={<StudentList />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
