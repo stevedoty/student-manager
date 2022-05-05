@@ -9,7 +9,6 @@ const AddStudent = () => {
     <div className="AddStudent">
       <h1>Add Student</h1>
       <StudentForm onSubmit={handleSubmit}/>
-      <button type="button" class="btn btn-primary">Add student</button>
     </div>
   );
 }

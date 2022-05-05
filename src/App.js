@@ -1,16 +1,21 @@
 import * as React from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import "./App.css";
-
 import AddStudent from './pages/AddStudent'
 import StudentList from './pages/StudentList'
+
+import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (
     <div className="App">
-      <nav>
-        <Link to="/">Add</Link>
-        <Link to="/students">Students</Link>
+      <nav className="nav">
+        <li className="nav-item">
+          <Link className="nav-link" to="/">Add</Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/students">Students</Link>
+        </li>
       </nav>
       <Routes>
         <Route path="/" element={<AddStudent />} />

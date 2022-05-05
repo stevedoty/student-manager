@@ -73,7 +73,7 @@ const StudentForm = ({initialValues={}, onSubmit=()=>{}}) => {
                 </label>
               </div>
 
-              <button type="submit">Submit</button>
+              <button type="submit">Add student</button>
             </Form>
           )}
         </Formik>
