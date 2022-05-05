@@ -19,7 +19,7 @@ const StudentList = () => {
    ]);
 
    const [columnDefs] = useState([
-       { field: 'firstName' },
+       { field: 'firstName', checkboxSelection: true },
        { field: 'lastName' },
        { field: 'userName' },
        { field: 'schoolName' },
