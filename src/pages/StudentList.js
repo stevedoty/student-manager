@@ -1,25 +1,20 @@
 import React, { useState, useCallback, useRef } from 'react';
 import { AgGridReact } from 'ag-grid-react';
-import {getStudents} from '../api'
+import {getStudents, deleteStudents, updateStudents} from '../api'
 
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const StudentList = () => {
+  React.useEffect(() => {
+      getStudents().then((resp)=>{
+        setRowData(resp.data);
+      })
+  }, []);
+
     const gridRef = useRef();
 
-   const [rowData] = useState([
-    {firstName: 'jo',
-    lastName: 'do',
-    userName: 'yo',
-    schoolName: 'sj',
-    license: 'licensed',},
-    {firstName: 'jo',
-    lastName: 'do',
-    userName: 'yo',
-    schoolName: 'sj',
-    license: 'licensed',},
-   ]);
+   const [rowData, setRowData] = useState([]);
 
    const [columnDefs] = useState([
        { field: 'firstName', checkboxSelection: true },
@@ -29,19 +24,21 @@ const StudentList = () => {
        { field: 'license' }
    ])
 
-   React.useEffect(() => {
-       getStudents()
-   }, []);
+
 
    const onSelectionChanged = (grid) => {
-     const selectedRows = grid.api.getSelectedRows();
-console.log(selectedRows);
+    const selectedRows = grid.api.getSelectedRows();
+    console.log(selectedRows);
    }
 
   const onRemoveSelected = useCallback(() => {
     const selectedData = gridRef.current.api.getSelectedRows();
-    const res = gridRef.current.api.applyTransaction({ remove: selectedData });
-    console.log(res);
+    if (selectedData.length){
+      deleteStudents(selectedData).then(()=>{
+        const res = gridRef.current.api.applyTransaction({ remove: selectedData });
+        console.log(res);
+      })
+    }
   }, []);
 
    return (

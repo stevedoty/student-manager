@@ -17,14 +17,14 @@ const students = [
 ]
 
 app.get('/api/students', (req, res) => {
-  res.send({data:students});
+  res.send(students);
 });
 
 app.put('/api/students/:id', (req, res) => {
   res.send({data:req.params.id});
 });
 
-app.delete('/api/students', (req, res) => {
+app.post('/api/students', (req, res) => {
   res.send({data:"delete data"});
 });
 
