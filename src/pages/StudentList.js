@@ -12,7 +12,7 @@ const StudentList = () => {
       })
   }, []);
 
-    const gridRef = useRef();
+  const gridRef = useRef();
 
    const [rowData, setRowData] = useState([]);
 
@@ -24,11 +24,9 @@ const StudentList = () => {
        { field: 'license' }
    ])
 
-
-
-   const onSelectionChanged = (grid) => {
-    const selectedRows = grid.api.getSelectedRows();
-    console.log(selectedRows);
+   const onRowValueChanged = (event) => {
+     var data = event.data;
+     updateStudents(data)
    }
 
   const onRemoveSelected = useCallback(() => {
@@ -49,8 +47,9 @@ const StudentList = () => {
                rowData={rowData}
                columnDefs={columnDefs}
                defaultColDef={{editable:true}}
+               editType={'fullRow'}
+               onRowValueChanged={onRowValueChanged}
                rowSelection={'multiple'}
-               onSelectionChanged={onSelectionChanged}
                />
        </div>
    );

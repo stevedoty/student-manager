@@ -4,12 +4,14 @@ const app = express();
 app.use(cors());
 
 const students = [
-   {firstName: 'jo',
+   {id:'1',
+   firstName: 'jo',
    lastName: 'do',
    userName: 'yo',
    schoolName: 'sj',
    license: 'licensed',},
-   {firstName: 'jo',
+   {id:'2',
+   firstName: 'jo',
    lastName: 'do',
    userName: 'yo',
    schoolName: 'sj',
