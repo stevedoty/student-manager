@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useRef } from 'react';
 import { AgGridReact } from 'ag-grid-react';
+import {getStudents} from '../api'
 
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
@@ -28,6 +29,9 @@ const StudentList = () => {
        { field: 'license' }
    ])
 
+   React.useEffect(() => {
+       getStudents()
+   }, []);
 
    const onSelectionChanged = (grid) => {
      const selectedRows = grid.api.getSelectedRows();
